@@ -601,11 +601,9 @@ public class MainFrame extends javax.swing.JFrame
     {//GEN-HEADEREND:event_viewIn3DButtonActionPerformed
         if(items == null || items.isEmpty())
         {
-            Util.showModelViewer(this, -1, -1);
             return;
         }
         WoWHeadData get = items.get(items.size()-1);
-        Util.showModelViewer(this, get.itemDisplayId, get.inventoryType);
     }//GEN-LAST:event_viewIn3DButtonActionPerformed
 
     private void manipulateChooserDirectory(JFileChooser chooser)

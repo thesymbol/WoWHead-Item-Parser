@@ -16,19 +16,16 @@
  */
 package wowhead_itemreader;
 
-import java.awt.Component;
-import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
-import org.fseek.modelview.ModelViewer;
 
 public class Util
 {
@@ -37,48 +34,6 @@ public class Util
         if(string == null)return "";
         String replaceAll = string.replaceAll("'", "''");
         return replaceAll;
-    }
-    
-        public static ModelViewer createModelViewer(Component parent, int id, int slot)
-    {
-        String idS = String.valueOf(id);
-        if(id == -1)
-        {
-            idS = null;
-        }
-        int modelType = 128;
-        if(slot == 13 || slot == 14 || slot == 15 || slot == 26 || slot == 17 || slot == 21 || slot == 22)
-        {
-            modelType = 1;
-        }
-        final ModelViewer modelViewer = new ModelViewer(MainFrame.mainDir, "http://static.wowhead.com/modelviewer/", idS, "#181818", slot + "," + id, modelType, false, null, null, null, null, null, null, null, "Stand");
-        modelViewer.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        modelViewer.setSize(new Dimension(600, 400));
-        modelViewer.setTitle("ItemViewer - " + id);
-        return modelViewer;
-    }
-    
-    public static ModelViewer showModelViewer(Component parent, int id, int slot)
-    {
-        try
-        {
-            ModelViewer modelViewer = Util.createModelViewer(parent, id, slot);
-            modelViewer.init();
-            modelViewer.setLocationRelativeTo(parent); 
-            modelViewer.setVisible(true);
-            return modelViewer;
-        }
-        catch(java.lang.NoClassDefFoundError ex)
-        {
-            JOptionPane.showMessageDialog(SwingUtilities.getWindowAncestor(parent),"Libarys not found !");
-            ex.printStackTrace();
-        }
-        catch(UnsatisfiedLinkError ex)
-        {
-            JOptionPane.showMessageDialog(SwingUtilities.getWindowAncestor(parent),"Native Libary path not set (start argument).");
-            ex.printStackTrace();
-        }
-        return null;
     }
     
     public static File cleanMainPath()
